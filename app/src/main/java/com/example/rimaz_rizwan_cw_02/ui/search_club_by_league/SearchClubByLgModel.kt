@@ -2,7 +2,7 @@
 //
 //import androidx.lifecycle.ViewModel
 //import androidx.lifecycle.viewModelScope
-//import com.example.rimaz_rizwan_cw_02.data.OfflineLeagueRepository
+//import com.example.rimaz_rizwan_cw_02.data.repository.OfflineLeagueRepository
 //import com.example.rimaz_rizwan_cw_02.data.club.Club
 //import kotlinx.coroutines.Dispatchers
 //import kotlinx.coroutines.launch

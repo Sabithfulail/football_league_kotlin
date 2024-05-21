@@ -1,4 +1,4 @@
-package com.example.rimaz_rizwan_cw_02.data
+package com.example.rimaz_rizwan_cw_02.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.example.rimaz_rizwan_cw_02.data.entity.League
 import kotlinx.coroutines.flow.Flow
 
 @Dao

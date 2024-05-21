@@ -1,4 +1,4 @@
-package com.example.rimaz_rizwan_cw_02.data
+package com.example.rimaz_rizwan_cw_02.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

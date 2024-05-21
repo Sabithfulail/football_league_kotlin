@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FootBall League</string>
+    <string name="leagues_view_title">Leagues in Db View</string>
+    <string name="no_league_description">Oops!\nNo leagues in the football leagues.</string>
+    <string name="search_club_by_league_title">Search Club by League</string>
+
+</resources>

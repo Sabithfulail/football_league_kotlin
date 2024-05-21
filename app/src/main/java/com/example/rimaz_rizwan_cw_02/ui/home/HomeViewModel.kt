@@ -1,11 +1,10 @@
 package com.example.rimaz_rizwan_cw_02.ui.home
 
 import androidx.lifecycle.ViewModel
-import com.example.rimaz_rizwan_cw_02.data.OfflineLeagueRepository
-import com.example.rimaz_rizwan_cw_02.data.League
+import com.example.rimaz_rizwan_cw_02.data.repository.OfflineLeagueRepository
+import com.example.rimaz_rizwan_cw_02.data.entity.League
 
 class HomeViewModel(private val repository: OfflineLeagueRepository) : ViewModel() {
-
     suspend fun saveListOfLeagues() {
         val leagues = listOf(
             League(4328, "English Premier League", "Soccer", "Premier League, EPL"),

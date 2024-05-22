@@ -75,7 +75,7 @@ class SearchClubByLgModel(private val repository: OfflineLeagueRepository) : Vie
         return clubList
     }
 
-    suspend fun saveListOfClubs(clubs:List<Club>){
+    suspend fun saveListOfClubs(clubs: List<Club>) {
         repository.insertListOfClub(clubs)
     }
 }

@@ -45,7 +45,6 @@ import androidx.navigation.NavHostController
 import com.example.rimaz_rizwan_cw_02.R
 import com.example.rimaz_rizwan_cw_02.data.entity.Club
 import com.example.rimaz_rizwan_cw_02.ui.AppViewModelProvider
-import com.example.rimaz_rizwan_cw_02.ui.add_league_to_db.LeaguesInDbViewModel
 import com.example.rimaz_rizwan_cw_02.ui.navigation.NavigationDestination
 import kotlinx.coroutines.launch
 
@@ -104,7 +103,7 @@ fun SearchClubByLeagueScreen(
         Button(
             onClick = {
                 coroutineScope.launch {
-                    if (clubs.isNotEmpty()){
+                    if (clubs.isNotEmpty()) {
                         viewModel.saveListOfClubs(clubs)
                     }
                 }

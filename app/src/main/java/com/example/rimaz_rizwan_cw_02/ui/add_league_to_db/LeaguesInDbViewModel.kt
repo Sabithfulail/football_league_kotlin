@@ -81,8 +81,4 @@ class LeaguesInDbViewModel(private val repository: OfflineLeagueRepository) : Vi
         println(clubList)
         return clubList
     }
-
-    fun insertSearchClubsByLeague(listOfClub: Club){
-//        repository.
-    }
 }

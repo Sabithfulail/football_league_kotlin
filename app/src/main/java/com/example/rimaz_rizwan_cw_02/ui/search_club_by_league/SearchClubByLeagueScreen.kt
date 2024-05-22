@@ -58,7 +58,7 @@ object SearchClubByLgDestination : NavigationDestination {
 @Composable
 fun SearchClubByLeagueScreen(
     navController: NavHostController,
-    viewModel: LeaguesInDbViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: SearchClubByLgModel = viewModel(factory = AppViewModelProvider.Factory),
     modifier: Modifier = Modifier
 ) {
     val clubs by viewModel.clubListStateFlow.collectAsState()

@@ -22,7 +22,7 @@ abstract class LeagueDatabase : RoomDatabase() {
         fun getDatabase(context: Context): LeagueDatabase {
             // if the Instance is not null, return it, otherwise create a new database instance.
             return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, LeagueDatabase::class.java, "item_database")
+                Room.databaseBuilder(context, LeagueDatabase::class.java, "football_league")
                     .build().also { Instance = it }
             }
         }

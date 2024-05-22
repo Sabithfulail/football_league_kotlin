@@ -9,17 +9,11 @@ import androidx.room.Update
 import com.example.rimaz_rizwan_cw_02.data.entity.Club
 @Dao
 interface ClubDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(club: Club)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertListOfClub(clubs: List<Club>)
-
-    @Update
-    suspend fun update(club: Club)
-
-    @Delete
-    suspend fun delete(club: Club)
 
     @Query("SELECT * from club ORDER BY strLeague ASC")
     fun getAllClubs(): List<Club>

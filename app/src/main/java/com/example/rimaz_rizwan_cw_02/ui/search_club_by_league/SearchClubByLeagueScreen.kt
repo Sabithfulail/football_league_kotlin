@@ -42,7 +42,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.rimaz_rizwan_cw_02.FootBallTopAppBar
 import com.example.rimaz_rizwan_cw_02.R
+import com.example.rimaz_rizwan_cw_02.components.CustomButton
 import com.example.rimaz_rizwan_cw_02.data.entity.Club
 import com.example.rimaz_rizwan_cw_02.ui.AppViewModelProvider
 import com.example.rimaz_rizwan_cw_02.ui.navigation.NavigationDestination
@@ -64,13 +66,11 @@ fun SearchClubByLeagueScreen(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         val coroutineScope = rememberCoroutineScope()
 
-        TopAppBar(
-            title = { Text(text = stringResource(id = SearchClubByLgDestination.titleRes)) },
-            navigationIcon = {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
-                }
-            }
+        FootBallTopAppBar(
+            title = stringResource(id = SearchClubByLgDestination.titleRes),
+            canNavigateBack = true,
+            navigateUp = { navController.navigateUp() }
+
         )
         var leagueName by remember { mutableStateOf("") }
         TextField(
@@ -83,7 +83,8 @@ fun SearchClubByLeagueScreen(
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
         )
 
-        Button(
+        CustomButton(
+            title = "Retrieve Clubs",
             enabled = leagueName.isNotEmpty(),
             onClick = {
                 coroutineScope.launch {
@@ -94,13 +95,10 @@ fun SearchClubByLeagueScreen(
                     }
                 }
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
-            Text(text = "Retrieve Clubs")
-        }
-        Button(
+            )
+        CustomButton(
+            title = "Save Clubs",
+            enabled = true,
             onClick = {
                 coroutineScope.launch {
                     if (clubs.isNotEmpty()) {
@@ -108,12 +106,7 @@ fun SearchClubByLeagueScreen(
                     }
                 }
             },
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        ) {
-            Text(text = "Save Clubs")
-        }
+        )
         if (clubs.isNotEmpty())
             ClubsInDbViewBody(
                 clubList = clubs

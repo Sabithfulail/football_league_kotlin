@@ -12,6 +12,8 @@ import com.example.rimaz_rizwan_cw_02.ui.home.HomeDestination
 import com.example.rimaz_rizwan_cw_02.ui.home.HomeScreen
 import com.example.rimaz_rizwan_cw_02.ui.search_club_by_league.SearchClubByLeagueScreen
 import com.example.rimaz_rizwan_cw_02.ui.search_club_by_league.SearchClubByLgDestination
+import com.example.rimaz_rizwan_cw_02.ui.search_clubs.SearchClubsViewDestination
+import com.example.rimaz_rizwan_cw_02.ui.search_clubs.SearchClubsViewScreen
 
 /**
  * Provides Navigation graph for the application.
@@ -26,9 +28,9 @@ fun LeaguesNavHost(
     ) {
         composable(route = HomeDestination.route) {
             HomeScreen(
-                navigateToAddLeagues = {navController.navigate(LeaguesInDbDestination.route)},
-                searchForClubs = { navController.navigate(SearchClubByLgDestination.route) },
-                searchForClubsByLeague = {navController.navigate(SearchClubByLgDestination.route)},
+                navigateToAddLeagues = { navController.navigate(LeaguesInDbDestination.route) },
+                searchForClubsByLeague = { navController.navigate(SearchClubByLgDestination.route) },
+                searchForClubs = { navController.navigate(SearchClubsViewDestination.route) },
             )
         }
         composable(route = LeaguesInDbDestination.route) {
@@ -40,6 +42,9 @@ fun LeaguesNavHost(
             SearchClubByLeagueScreen(
                 navController = navController
             )
+        }
+        composable(route = SearchClubsViewDestination.route) {
+            SearchClubsViewScreen(navController = navController)
         }
     }
 }

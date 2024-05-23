@@ -9,6 +9,7 @@ import com.example.rimaz_rizwan_cw_02.FootBallLeagueApplication
 import com.example.rimaz_rizwan_cw_02.ui.add_league_to_db.LeaguesInDbViewModel
 import com.example.rimaz_rizwan_cw_02.ui.home.HomeViewModel
 import com.example.rimaz_rizwan_cw_02.ui.search_club_by_league.SearchClubByLgModel
+import com.example.rimaz_rizwan_cw_02.ui.search_clubs.SearchClubsViewModel
 
 /**
  * Provides Factory to create instance of ViewModel for the entire Inventory app
@@ -25,8 +26,13 @@ object AppViewModelProvider {
         initializer {
             LeaguesInDbViewModel(leagueApplication().container.offlineLeagueRepository)
         }
+
         initializer {
             SearchClubByLgModel(leagueApplication().container.offlineLeagueRepository)
+        }
+
+        initializer {
+            SearchClubsViewModel(leagueApplication().container.offlineLeagueRepository)
         }
 
     }

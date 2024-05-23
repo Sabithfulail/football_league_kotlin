@@ -48,15 +48,15 @@ class SearchClubByLgModel(private val repository: OfflineLeagueRepository) : Vie
         val clubList = mutableListOf<Club>()
         (0..<countriesArray.length()).forEach { i ->
             val countryObject = countriesArray.getJSONObject(i)
-            val idLeague = countryObject.getString("idLeague")
-            val strSport = countryObject.getString("strSport")
-            val strLeague = countryObject.getString("strLeague")
-            val strCurrentSeason = countryObject.getString("strCurrentSeason")
-            val dateFirstEvent = countryObject.getString("dateFirstEvent")
-            val strLeagueAlternate = countryObject.getString("strLeagueAlternate")
-            val strGender = countryObject.getString("strGender")
-            val strCountry = countryObject.getString("strCountry")
-            val intDivision = countryObject.getString("intDivision")
+            val idLeague = countryObject?.getString("idLeague") ?: ""
+            val strSport = countryObject?.getString("strSport") ?: ""
+            val strLeague = countryObject?.getString("strLeague") ?: ""
+            val strCurrentSeason = countryObject?.getString("strCurrentSeason") ?: ""
+            val dateFirstEvent = countryObject?.getString("dateFirstEvent") ?: ""
+            val strLeagueAlternate = countryObject?.getString("strLeagueAlternate") ?: ""
+            val strGender = countryObject?.getString("strGender") ?: ""
+            val strCountry = countryObject?.getString("strCountry") ?: ""
+            val intDivision = countryObject?.getString("intDivision") ?: ""
 
             val club = Club(
                 strLeague = strLeague,

@@ -26,7 +26,6 @@ fun HomeScreen(
     navigateToAddLeagues: () -> Unit,
     searchForClubsByLeague: () -> Unit,
     searchForClubs: () -> Unit,
-    modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
 

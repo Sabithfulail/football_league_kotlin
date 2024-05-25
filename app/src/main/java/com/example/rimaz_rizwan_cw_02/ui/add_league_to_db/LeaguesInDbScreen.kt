@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.rimaz_rizwan_cw_02.FootBallTopAppBar
 import com.example.rimaz_rizwan_cw_02.R
 import com.example.rimaz_rizwan_cw_02.data.entity.League
 import com.example.rimaz_rizwan_cw_02.ui.AppViewModelProvider
@@ -50,13 +51,10 @@ fun LeaguesInDbScreen(
 ) {
     val leaguesInDb by viewModel.getAllLeagues().collectAsState(initial = emptyList())
     Column {
-        TopAppBar(
-            title = { Text(text = stringResource(id = LeaguesInDbDestination.titleRes)) },
-            navigationIcon = {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
-                }
-            }
+        FootBallTopAppBar(
+            canNavigateBack = true,
+            title = stringResource(id = LeaguesInDbDestination.titleRes),
+            navigateUp = { navController.navigateUp() }
         )
         leaguesInDbViewBody(
             leagueList = leaguesInDb

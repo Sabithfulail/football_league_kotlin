@@ -13,9 +13,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -67,6 +70,14 @@ fun SearchClubByLeagueScreen(
         )
         var leagueName by remember { mutableStateOf("") }
         TextField(
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search"
+                )
+            },
+            shape = RoundedCornerShape(15.dp), // Custom border radius,
+            placeholder = { Text(text = "Name of League") },
             value = leagueName,
             onValueChange = { leagueName = it },
             modifier = Modifier
@@ -88,7 +99,7 @@ fun SearchClubByLeagueScreen(
                     }
                 }
             },
-            )
+        )
         CustomButton(
             title = "Save Clubs",
             enabled = true,

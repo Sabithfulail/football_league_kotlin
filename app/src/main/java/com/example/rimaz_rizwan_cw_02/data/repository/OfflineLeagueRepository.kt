@@ -8,11 +8,16 @@ import kotlinx.coroutines.flow.Flow
 
 class OfflineLeagueRepository(private val itemDao: LeagueDao, private val clubDao: ClubDao) :
     LeagueRepository {
-    override fun getAllLeagueStream(): Flow<List<League>> = itemDao.getAllItems()
+    override fun getAllLeagueStream(): Flow<List<League>> = itemDao.getAllLeagues()
 
     override suspend fun insertListOfLeague(league: List<League>) =
         itemDao.insertListOfLeagues(league)
 
     override suspend fun insertListOfClub(clubs: List<Club>) = clubDao.insertListOfClub(clubs)
-
+    override suspend fun searchClubs(query: String): Flow<List<Club>> {
+        return clubDao.searchClubs(query)
+    }
+    override suspend fun searchLeagues(query: String): Flow<List<League>> {
+        return clubDao.searchLeagues(query)
+    }
 }

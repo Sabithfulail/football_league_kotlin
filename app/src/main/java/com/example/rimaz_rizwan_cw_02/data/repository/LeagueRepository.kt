@@ -14,4 +14,6 @@ interface LeagueRepository {
     suspend fun insertListOfLeague(league: List<League>)
     suspend fun insertListOfClub(clubs: List<Club>)
 
+    suspend fun searchClubs(query: String): Flow<List<Club>>
+    suspend fun searchLeagues(query: String): Flow<List<League>>
 }

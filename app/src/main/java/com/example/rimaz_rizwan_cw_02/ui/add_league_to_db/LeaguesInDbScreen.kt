@@ -42,7 +42,6 @@ object LeaguesInDbDestination : NavigationDestination {
 fun LeaguesInDbScreen(
     navController: NavHostController,
     viewModel: LeaguesInDbViewModel = viewModel(factory = AppViewModelProvider.Factory),
-    modifier: Modifier = Modifier
 ) {
     val leaguesInDb by viewModel.getAllLeagues().collectAsState(initial = emptyList())
     Column {
@@ -51,14 +50,14 @@ fun LeaguesInDbScreen(
             title = stringResource(id = LeaguesInDbDestination.titleRes),
             navigateUp = { navController.navigateUp() }
         )
-        leaguesInDbViewBody(
+        LeaguesInDbViewBody(
             leagueList = leaguesInDb
         )
     }
 }
 
 @Composable
-fun leaguesInDbViewBody(
+fun LeaguesInDbViewBody(
     leagueList: List<League>,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),

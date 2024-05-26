@@ -27,7 +27,7 @@ interface LeagueDao {
     fun getItem(id: Int): Flow<League>
 
     @Query("SELECT * from leagues ORDER BY strLeague ASC")
-    fun getAllItems(): Flow<List<League>>
+    fun getAllLeagues(): Flow<List<League>>
 
     @Query("SELECT * from leagues ORDER BY strLeague ASC")
     fun getAllLeague(): List<League>

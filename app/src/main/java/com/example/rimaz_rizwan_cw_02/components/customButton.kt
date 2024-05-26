@@ -1,7 +1,9 @@
 package com.example.rimaz_rizwan_cw_02.components
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +29,8 @@ fun CustomButton(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
         ),
+        shape = RoundedCornerShape(12.dp), // Custom border radius
+        contentPadding = PaddingValues(vertical = 12.dp) // Custom height
     ) {
         Text(text = title)
     }

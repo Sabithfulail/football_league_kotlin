@@ -1,5 +1,6 @@
 package com.example.rimaz_rizwan_cw_02.ui.search_club_by_league
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,6 +22,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -32,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -46,6 +50,7 @@ import com.example.rimaz_rizwan_cw_02.data.entity.Club
 import com.example.rimaz_rizwan_cw_02.ui.AppViewModelProvider
 import com.example.rimaz_rizwan_cw_02.ui.navigation.NavigationDestination
 import kotlinx.coroutines.launch
+import loadNetworkImage
 
 object SearchClubByLgDestination : NavigationDestination {
     override val route = "search_club_by_league"
@@ -61,7 +66,7 @@ fun SearchClubByLeagueScreen(
     val clubs by viewModel.clubListStateFlow.collectAsState()
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         val coroutineScope = rememberCoroutineScope()
-
+        val snackbarHostState = remember { SnackbarHostState() }
         FootBallTopAppBar(
             title = stringResource(id = SearchClubByLgDestination.titleRes),
             canNavigateBack = true,
@@ -92,9 +97,13 @@ fun SearchClubByLeagueScreen(
             enabled = leagueName.isNotEmpty(),
             onClick = {
                 coroutineScope.launch {
+                    viewModel.clearClubs()
                     if (leagueName.isNotEmpty()) {
-                        coroutineScope.launch {
+                        try {
                             viewModel.fetchClubs(leagueName)
+                        } catch (e: Exception) {
+                            // Show Snackbar on error
+                            snackbarHostState.showSnackbar("Error fetching clubs: ${e.message}")
                         }
                     }
                 }
@@ -192,8 +201,20 @@ private fun FootBallClub(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
+                if (club.strBadge.isNotEmpty()) {
+                    val image = loadNetworkImage(club.strBadge)
+                    if (image != null) {
+                        Image(
+                            bitmap = image,
+                            contentDescription = "Club Logo",
+                            modifier = Modifier.size(40.dp), // Size of the thumbnail
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                }
                 Text(
                     text = club.strLeague,
                     style = MaterialTheme.typography.titleLarge,

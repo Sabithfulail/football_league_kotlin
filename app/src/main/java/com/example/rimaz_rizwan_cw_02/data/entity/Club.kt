@@ -15,4 +15,5 @@ data class Club(
     val dateFirstEvent: String,
     val strGender: String,
     val strCountry: String,
+    val strBadge: String
 )
